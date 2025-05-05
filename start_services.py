@@ -223,8 +223,8 @@ def main():
     prepare_supabase_env()
     
     # Generate SearXNG secret key and check docker-compose.yml
-    generate_searxng_secret_key()
-    check_and_fix_docker_compose_for_searxng()
+    # generate_searxng_secret_key()
+    # check_and_fix_docker_compose_for_searxng()
     
     stop_existing_containers()
     
