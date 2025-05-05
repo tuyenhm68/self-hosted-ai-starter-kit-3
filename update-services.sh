@@ -41,7 +41,7 @@ echo "Step 2: Pulling latest versions of all containers"
 docker compose -p localai --profile $profile -f docker-compose.yml -f supabase/docker/docker-compose.yml pull
 
 echo "Step 3: Starting services again with profile: $profile"
-python start_services.py --profile $profile
+python3 start_services.py --profile $profile
 
 echo ""
 echo "=== Services Updated and Started ==="

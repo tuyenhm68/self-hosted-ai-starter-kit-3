@@ -50,12 +50,9 @@ builder that pairs very well with n8n
 store with an comprehensive API. Even though you can use Supabase for RAG, this was
 kept unlike Postgres since it's faster than Supabase so sometimes is the better option.
 
-✅ [**SearXNG**](https://searxng.org/) - Open source, free internet metasearch engine which aggregates 
-results from up to 229 search services. Users are neither tracked nor profiled, hence the fit with the local AI package.
-
 ✅ [**Caddy**](https://caddyserver.com/) - Managed HTTPS/TLS for custom domains
 
-✅ [**Langfuse**](https://langfuse.com/) - Open source LLM engineering platform for agent observability
+✅ [**Portainer**](https://portainer.io/) - Managed Docker container management
 
 ## Prerequisites
 
@@ -95,15 +92,6 @@ Before running the services, you need to set up your environment variables for S
    DASHBOARD_PASSWORD=
    POOLER_TENANT_ID=
 
-   ############
-   # Langfuse credentials
-   ############
-
-   CLICKHOUSE_PASSWORD=
-   MINIO_ROOT_PASSWORD=
-   LANGFUSE_SALT=
-   NEXTAUTH_SECRET=
-   ENCRYPTION_KEY=  
    ```
 
 > [!IMPORTANT]
@@ -120,7 +108,6 @@ Before running the services, you need to set up your environment variables for S
    FLOWISE_HOSTNAME=:flowise.yourdomain.com
    SUPABASE_HOSTNAME=:supabase.yourdomain.com
    OLLAMA_HOSTNAME=:ollama.yourdomain.com
-   SEARXNG_HOSTNAME=searxng.yourdomain.com
    LETSENCRYPT_EMAIL=your-email-address
    ```   
 
@@ -265,7 +252,7 @@ language model and Qdrant as your vector store.
 > combines robust components that work well together for proof-of-concept
 > projects. You can customize it to meet your specific needs
 
-## Upgrading
+## Upgrading on Windows
 
 To update all containers to their latest versions (n8n, Open WebUI, etc.), run these commands:
 
@@ -280,7 +267,24 @@ docker compose -p localai --profile <your-profile> -f docker-compose.yml -f supa
 python start_services.py --profile <your-profile>
 ```
 
-Replace `<your-profile>` with one of: `cpu`, `gpu-nvidia`, `gpu-amd`, or `none`.
+Replace <your-profile> with one of: cpu, gpu-nvidia, gpu-amd, or none.
+
+## Upgrading on VPS or Linux  
+
+To update all containers to their latest versions (n8n, Open WebUI, etc.), run these commands:
+
+```bash
+# Stop all services
+sudo bash stop-services.sh #select <your-profile> from the list
+
+# Pull latest versions of all containers
+sudo bash update-services.sh
+
+# Start services again with your desired profile
+sudo bash start-services.sh #select <your-profile> from the list
+```
+
+Select `<your-profile>` with one of: `cpu`, `gpu-nvidia`, `gpu-amd`, or `none`.
 
 Note: The `start_services.py` script itself does not update containers - it only restarts them or pulls them if you are downloading these containers for the first time. To get the latest versions, you must explicitly run the commands above.
 
