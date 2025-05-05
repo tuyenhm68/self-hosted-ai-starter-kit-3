@@ -9,10 +9,22 @@ set -e
 # Load environment variables from .env file if it exists
 if [ -f .env ]; then
     echo "Loading environment variables from .env file..."
-    # Use a safer way to load environment variables that ignores comments and handles special characters
-    set -a
-    source .env
-    set +a
+    # Read the file line by line and export valid variable assignments
+    while IFS= read -r line || [ -n "$line" ]; do
+        # Skip comments and empty lines
+        if [[ $line =~ ^[[:space:]]*$ || $line =~ ^[[:space:]]*# ]]; then
+            continue
+        fi
+        # Only process lines with an equals sign (variable assignments)
+        if [[ $line == *"="* ]]; then
+            # Extract variable name (everything before the first =)
+            var_name=$(echo "$line" | cut -d= -f1)
+            # Extract variable value (everything after the first =)
+            var_value=$(echo "$line" | cut -d= -f2-)
+            # Export the variable
+            export "$var_name"="$var_value"
+        fi
+    done < .env
 fi
 
 echo "=== Starting Services ==="
