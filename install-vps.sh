@@ -78,14 +78,14 @@ if [ ! -f .env ]; then
         read -p "Enter your email for Let's Encrypt: " LETSENCRYPT_EMAIL
         
         # Uncomment and configure Caddy section in .env
-        sed -i 's/^#\(.*# Caddy Config.*\)/\1/' .env
-        sed -i "s|^#N8N_HOSTNAME=.*|N8N_HOSTNAME=n8n.$BASE_DOMAIN|" .env
-        sed -i "s|^#WEBUI_HOSTNAME=.*|WEBUI_HOSTNAME=openwebui.$BASE_DOMAIN|" .env
-        sed -i "s|^#FLOWISE_HOSTNAME=.*|FLOWISE_HOSTNAME=flowise.$BASE_DOMAIN|" .env
-        sed -i "s|^#SUPABASE_HOSTNAME=.*|SUPABASE_HOSTNAME=supabase.$BASE_DOMAIN|" .env
-        sed -i "s|^#OLLAMA_HOSTNAME=.*|OLLAMA_HOSTNAME=ollama.$BASE_DOMAIN|" .env
-        sed -i "s|^#PORTAINER_HOSTNAME=.*|PORTAINER_HOSTNAME=portainer.$BASE_DOMAIN|" .env
-        sed -i "s|^#LETSENCRYPT_EMAIL=.*|LETSENCRYPT_EMAIL=$LETSENCRYPT_EMAIL|" .env
+        # First, remove the # character from the beginning of each line
+        sed -i 's/^#N8N_HOSTNAME=.*/N8N_HOSTNAME=n8n.'$BASE_DOMAIN'/' .env
+        sed -i 's/^#WEBUI_HOSTNAME=.*/WEBUI_HOSTNAME=openwebui.'$BASE_DOMAIN'/' .env
+        sed -i 's/^#FLOWISE_HOSTNAME=.*/FLOWISE_HOSTNAME=flowise.'$BASE_DOMAIN'/' .env
+        sed -i 's/^#SUPABASE_HOSTNAME=.*/SUPABASE_HOSTNAME=supabase.'$BASE_DOMAIN'/' .env
+        sed -i 's/^#OLLAMA_HOSTNAME=.*/OLLAMA_HOSTNAME=ollama.'$BASE_DOMAIN'/' .env
+        sed -i 's/^#PORTAINER_HOSTNAME=.*/PORTAINER_HOSTNAME=portainer.'$BASE_DOMAIN'/' .env
+        sed -i 's/^#LETSENCRYPT_EMAIL=.*/LETSENCRYPT_EMAIL='$LETSENCRYPT_EMAIL'/' .env
         
         echo "Caddy configuration has been set up with your domains in the .env file."
     else
