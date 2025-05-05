@@ -7,7 +7,7 @@ volumes:
   caddy-data:
   caddy-config:
   # valkey-data:
-  # langfuse_postgres_data:
+  langfuse_postgres_data:
   # langfuse_clickhouse_data:
   # langfuse_clickhouse_logs:
   # langfuse_minio_data:
