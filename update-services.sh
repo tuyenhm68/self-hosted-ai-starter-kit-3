@@ -6,6 +6,12 @@
 # Exit on error
 set -e
 
+# Load environment variables from .env file if it exists
+if [ -f .env ]; then
+    echo "Loading environment variables from .env file..."
+    export $(grep -v '^#' .env | xargs)
+fi
+
 echo "=== Updating Services ==="
 echo "Choose your GPU profile:"
 echo "1) NVIDIA GPU"
@@ -47,11 +53,44 @@ echo ""
 echo "=== Services Updated and Started ==="
 echo ""
 echo "Services should now be available at:"
-echo "- n8n: https://n8n.$BASE_DOMAIN"
-echo "- Open WebUI: https://openwebui.$BASE_DOMAIN"
-echo "- Flowise: https://flowise.$BASE_DOMAIN"
-echo "- Supabase: https://supabase.$BASE_DOMAIN"
-echo "- Ollama: https://ollama.$BASE_DOMAIN"
+
+# Check if domain variables are set, otherwise use localhost with ports
+if [ -n "$N8N_HOSTNAME" ]; then
+    echo "- n8n: https://$N8N_HOSTNAME"
+else
+    echo "- n8n: http://localhost:5678"
+fi
+
+if [ -n "$WEBUI_HOSTNAME" ]; then
+    echo "- Open WebUI: https://$WEBUI_HOSTNAME"
+else
+    echo "- Open WebUI: http://localhost:3000"
+fi
+
+if [ -n "$FLOWISE_HOSTNAME" ]; then
+    echo "- Flowise: https://$FLOWISE_HOSTNAME"
+else
+    echo "- Flowise: http://localhost:3001"
+fi
+
+if [ -n "$SUPABASE_HOSTNAME" ]; then
+    echo "- Supabase: https://$SUPABASE_HOSTNAME"
+else
+    echo "- Supabase: http://localhost:8000"
+fi
+
+if [ -n "$OLLAMA_HOSTNAME" ]; then
+    echo "- Ollama: https://$OLLAMA_HOSTNAME"
+else
+    echo "- Ollama: http://localhost:11434"
+fi
+
+if [ -n "$PORTAINER_HOSTNAME" ]; then
+    echo "- Portainer: https://$PORTAINER_HOSTNAME"
+else
+    echo "- Portainer: http://localhost:9001"
+fi
+
 echo ""
 echo "If you've configured domains in the .env file, your services will be available at those domains."
 echo ""

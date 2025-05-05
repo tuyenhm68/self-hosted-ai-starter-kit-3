@@ -14,7 +14,7 @@
 {$PORTAINER_HOSTNAME} {
     # For domains, Caddy will automatically use Let's Encrypt
     # For localhost/port addresses, HTTPS won't be enabled
-    reverse_proxy localhost:9000
+    reverse_proxy localhost:9001
 }
 
 # Open WebUI
