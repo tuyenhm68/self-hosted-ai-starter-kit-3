@@ -1,5 +1,5 @@
+# Global options
 {
-    # Global options - works for both environments
     email {$LETSENCRYPT_EMAIL}
 }
 
