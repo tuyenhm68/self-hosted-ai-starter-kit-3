@@ -57,17 +57,17 @@ if [ ! -f .env ]; then
     N8N_ENCRYPTION_KEY=$(openssl rand -hex 24)
     N8N_USER_MANAGEMENT_JWT_SECRET=$(openssl rand -hex 24)
     POSTGRES_PASSWORD=$(openssl rand -hex 24)
-    JWT_SECRET=$(openssl rand -hex 24)
-    ANON_KEY=$(openssl rand -hex 24)
-    SERVICE_ROLE_KEY=$(openssl rand -hex 24)
+    # JWT_SECRET=$(openssl rand -hex 24)
+    # ANON_KEY=$(openssl rand -hex 24)
+    # SERVICE_ROLE_KEY=$(openssl rand -hex 24)
     DASHBOARD_USERNAME="admin"
     DASHBOARD_PASSWORD=$(openssl rand -hex 12)
     POOLER_TENANT_ID=$(openssl rand -hex 24)
-    CLICKHOUSE_PASSWORD=$(openssl rand -hex 24)
-    MINIO_ROOT_PASSWORD=$(openssl rand -hex 24)
-    LANGFUSE_SALT=$(openssl rand -hex 24)
-    NEXTAUTH_SECRET=$(openssl rand -hex 24)
-    ENCRYPTION_KEY=$(openssl rand -hex 24)
+    # CLICKHOUSE_PASSWORD=$(openssl rand -hex 24)
+    # MINIO_ROOT_PASSWORD=$(openssl rand -hex 24)
+    # LANGFUSE_SALT=$(openssl rand -hex 24)
+    # NEXTAUTH_SECRET=$(openssl rand -hex 24)
+    # ENCRYPTION_KEY=$(openssl rand -hex 24)
     
     # Caddy configuration
     echo "Setting up Caddy configuration..."
@@ -79,14 +79,14 @@ if [ ! -f .env ]; then
         
         # Uncomment and configure Caddy section in .env
         sed -i 's/^#\(.*# Caddy Config.*\)/\1/' .env
-        sed -i 's/^#\(N8N_HOSTNAME=\).*/\1n8n.'$BASE_DOMAIN'/' .env
-        sed -i 's/^#\(WEBUI_HOSTNAME=\).*/\1openwebui.'$BASE_DOMAIN'/' .env
-        sed -i 's/^#\(FLOWISE_HOSTNAME=\).*/\1flowise.'$BASE_DOMAIN'/' .env
-        sed -i 's/^#\(SUPABASE_HOSTNAME=\).*/\1supabase.'$BASE_DOMAIN'/' .env
-        sed -i 's/^#\(OLLAMA_HOSTNAME=\).*/\1ollama.'$BASE_DOMAIN'/' .env
-        sed -i 's/^#\(SEARXNG_HOSTNAME=\).*/\1searxng.'$BASE_DOMAIN'/' .env
-        sed -i 's/^#\(LANGFUSE_HOSTNAME=\).*/\1langfuse.'$BASE_DOMAIN'/' .env
-        sed -i 's/^#\(LETSENCRYPT_EMAIL=\).*/\1'$LETSENCRYPT_EMAIL'/' .env
+        sed -i "s|^#N8N_HOSTNAME=.*|N8N_HOSTNAME=n8n.$BASE_DOMAIN|" .env
+        sed -i "s|^#WEBUI_HOSTNAME=.*|WEBUI_HOSTNAME=openwebui.$BASE_DOMAIN|" .env
+        sed -i "s|^#FLOWISE_HOSTNAME=.*|FLOWISE_HOSTNAME=flowise.$BASE_DOMAIN|" .env
+        sed -i "s|^#SUPABASE_HOSTNAME=.*|SUPABASE_HOSTNAME=supabase.$BASE_DOMAIN|" .env
+        # sed -i "s|^#LANGFUSE_HOSTNAME=.*|LANGFUSE_HOSTNAME=langfuse.$BASE_DOMAIN|" .env
+        sed -i "s|^#OLLAMA_HOSTNAME=.*|OLLAMA_HOSTNAME=ollama.$BASE_DOMAIN|" .env
+        # sed -i "s|^#SEARXNG_HOSTNAME=.*|SEARXNG_HOSTNAME=searxng.$BASE_DOMAIN|" .env
+        sed -i "s|^#LETSENCRYPT_EMAIL=.*|LETSENCRYPT_EMAIL=$LETSENCRYPT_EMAIL|" .env
         
         echo "Caddy configuration has been set up with your domains in the .env file."
     else
@@ -97,17 +97,17 @@ if [ ! -f .env ]; then
     sed -i "s/^N8N_ENCRYPTION_KEY=.*/N8N_ENCRYPTION_KEY=$N8N_ENCRYPTION_KEY/" .env
     sed -i "s/^N8N_USER_MANAGEMENT_JWT_SECRET=.*/N8N_USER_MANAGEMENT_JWT_SECRET=$N8N_USER_MANAGEMENT_JWT_SECRET/" .env
     sed -i "s/^POSTGRES_PASSWORD=.*/POSTGRES_PASSWORD=$POSTGRES_PASSWORD/" .env
-    sed -i "s/^JWT_SECRET=.*/JWT_SECRET=$JWT_SECRET/" .env
-    sed -i "s/^ANON_KEY=.*/ANON_KEY=$ANON_KEY/" .env
-    sed -i "s/^SERVICE_ROLE_KEY=.*/SERVICE_ROLE_KEY=$SERVICE_ROLE_KEY/" .env
+    # sed -i "s/^JWT_SECRET=.*/JWT_SECRET=$JWT_SECRET/" .env
+    # sed -i "s/^ANON_KEY=.*/ANON_KEY=$ANON_KEY/" .env
+    # sed -i "s/^SERVICE_ROLE_KEY=.*/SERVICE_ROLE_KEY=$SERVICE_ROLE_KEY/" .env
     sed -i "s/^DASHBOARD_USERNAME=.*/DASHBOARD_USERNAME=$DASHBOARD_USERNAME/" .env
     sed -i "s/^DASHBOARD_PASSWORD=.*/DASHBOARD_PASSWORD=$DASHBOARD_PASSWORD/" .env
     sed -i "s/^POOLER_TENANT_ID=.*/POOLER_TENANT_ID=$POOLER_TENANT_ID/" .env
-    sed -i "s/^CLICKHOUSE_PASSWORD=.*/CLICKHOUSE_PASSWORD=$CLICKHOUSE_PASSWORD/" .env
-    sed -i "s/^MINIO_ROOT_PASSWORD=.*/MINIO_ROOT_PASSWORD=$MINIO_ROOT_PASSWORD/" .env
-    sed -i "s/^LANGFUSE_SALT=.*/LANGFUSE_SALT=$LANGFUSE_SALT/" .env
-    sed -i "s/^NEXTAUTH_SECRET=.*/NEXTAUTH_SECRET=$NEXTAUTH_SECRET/" .env
-    sed -i "s/^ENCRYPTION_KEY=.*/ENCRYPTION_KEY=$ENCRYPTION_KEY/" .env
+    # sed -i "s/^CLICKHOUSE_PASSWORD=.*/CLICKHOUSE_PASSWORD=$CLICKHOUSE_PASSWORD/" .env
+    # sed -i "s/^MINIO_ROOT_PASSWORD=.*/MINIO_ROOT_PASSWORD=$MINIO_ROOT_PASSWORD/" .env
+    # sed -i "s/^LANGFUSE_SALT=.*/LANGFUSE_SALT=$LANGFUSE_SALT/" .env
+    # sed -i "s/^NEXTAUTH_SECRET=.*/NEXTAUTH_SECRET=$NEXTAUTH_SECRET/" .env
+    # sed -i "s/^ENCRYPTION_KEY=.*/ENCRYPTION_KEY=$ENCRYPTION_KEY/" .env
     
     echo "Environment variables have been set with secure random values."
     echo "IMPORTANT: If you want to deploy to production with a domain, edit the .env file"
@@ -153,13 +153,11 @@ echo ""
 echo "=== Installation Complete ==="
 echo ""
 echo "Services should now be available at:"
-echo "- n8n: http://localhost:5678"
-echo "- Open WebUI: http://localhost:3000"
-echo "- Flowise: http://localhost:3001"
-echo "- Supabase: http://localhost:8000"
-echo "- Ollama: http://localhost:11434"
-echo "- SearXNG: http://localhost:8080"
-echo "- Langfuse: http://localhost:3002"
+echo "- n8n: https://n8n.$BASE_DOMAIN"
+echo "- Open WebUI: https://openwebui.$BASE_DOMAIN"
+echo "- Flowise: https://flowise.$BASE_DOMAIN"
+echo "- Supabase: https://supabase.$BASE_DOMAIN"
+echo "- Ollama: https://ollama.$BASE_DOMAIN"
 echo ""
 echo "If you've configured domains in the .env file, your services will be available at those domains."
 echo ""

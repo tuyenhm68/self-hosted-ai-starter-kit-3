@@ -1,12 +1,12 @@
-# Install Self-hosted AI Starter Kit on VPS
+# Install Self-hosted AI Starter Kit 3 on VPS
 Clone the repository and navigate to the project directory:
 ```bash
 git clone https://github.com/tuyenhm68/self-hosted-ai-starter-kit-3.git
 cd self-hosted-ai-starter-kit-3
-sh install-vps.sh
+sudo bash install-vps.sh
 ```
 
-# Install Self-hosted AI Starter Kit on Local Machine
+# Install Self-hosted AI Starter Kit 3 on Local Machine
 **Self-hosted AI Package** is an open, docker compose template that
 quickly bootstraps a fully featured Local AI and Low Code development
 environment including Ollama for your local LLMs, Open WebUI for an interface to chat with your N8N agents, and Supabase for your database, vector store, and authentication. 
