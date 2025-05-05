@@ -83,9 +83,8 @@ if [ ! -f .env ]; then
         sed -i "s|^#WEBUI_HOSTNAME=.*|WEBUI_HOSTNAME=openwebui.$BASE_DOMAIN|" .env
         sed -i "s|^#FLOWISE_HOSTNAME=.*|FLOWISE_HOSTNAME=flowise.$BASE_DOMAIN|" .env
         sed -i "s|^#SUPABASE_HOSTNAME=.*|SUPABASE_HOSTNAME=supabase.$BASE_DOMAIN|" .env
-        # sed -i "s|^#LANGFUSE_HOSTNAME=.*|LANGFUSE_HOSTNAME=langfuse.$BASE_DOMAIN|" .env
         sed -i "s|^#OLLAMA_HOSTNAME=.*|OLLAMA_HOSTNAME=ollama.$BASE_DOMAIN|" .env
-        # sed -i "s|^#SEARXNG_HOSTNAME=.*|SEARXNG_HOSTNAME=searxng.$BASE_DOMAIN|" .env
+        sed -i "s|^#PORTAINER_HOSTNAME=.*|PORTAINER_HOSTNAME=portainer.$BASE_DOMAIN|" .env
         sed -i "s|^#LETSENCRYPT_EMAIL=.*|LETSENCRYPT_EMAIL=$LETSENCRYPT_EMAIL|" .env
         
         echo "Caddy configuration has been set up with your domains in the .env file."
@@ -158,6 +157,7 @@ echo "- Open WebUI: https://openwebui.$BASE_DOMAIN"
 echo "- Flowise: https://flowise.$BASE_DOMAIN"
 echo "- Supabase: https://supabase.$BASE_DOMAIN"
 echo "- Ollama: https://ollama.$BASE_DOMAIN"
+echo "- Portainer: https://portainer.$BASE_DOMAIN"
 echo ""
 echo "If you've configured domains in the .env file, your services will be available at those domains."
 echo ""
