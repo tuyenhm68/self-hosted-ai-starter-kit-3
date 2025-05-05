@@ -9,7 +9,10 @@ set -e
 # Load environment variables from .env file if it exists
 if [ -f .env ]; then
     echo "Loading environment variables from .env file..."
-    export $(grep -v '^#' .env | xargs)
+    # Use a safer way to load environment variables that ignores comments and handles special characters
+    set -a
+    source .env
+    set +a
 fi
 
 echo "=== Updating Services ==="
