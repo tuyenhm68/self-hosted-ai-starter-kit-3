@@ -324,7 +324,7 @@ and nodes. If you run into an issue, go to [support](#support).
 
 ## 🎥 Video walkthrough
 
-- [Cole's Guide to the Local AI Starter Kit](https://youtu.be/pOsO40HSbOo)
+- [Guide to the Local AI Starter Kit 3](https://youtu.be/KMKr6_jsogg)
 
 ## 🛍️ More AI templates
 
