@@ -1,43 +1,31 @@
 {
-  "name": "V2.1 Supabase RAG AI Agent",
+  "name": "My workflow",
   "nodes": [
     {
       "parameters": {
         "options": {}
       },
-      "id": "616c4d3f-485f-4566-a527-e766f7ccf221",
+      "id": "a0c3cad9-9922-43f4-8e23-3d3ff84419a4",
       "name": "OpenAI Chat Model",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        -700,
-        420
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "HncvSrrgWmm7rDzf",
-          "name": "OpenAi account"
-        }
-      }
+        1080,
+        360
+      ]
     },
     {
       "parameters": {
         "options": {}
       },
-      "id": "fe591eb3-8610-4c0e-b108-b8f57054f8a7",
+      "id": "7a917eda-02d5-4a1f-9a81-f29c64fd15c0",
       "name": "OpenAI Chat Model1",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        120,
-        360
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "HncvSrrgWmm7rDzf",
-          "name": "OpenAi account"
-        }
-      }
+        1900,
+        300
+      ]
     },
     {
       "parameters": {
@@ -54,13 +42,13 @@
           }
         }
       },
-      "id": "1998182a-c644-4820-83ae-507babaef1eb",
+      "id": "5eac4563-a149-46a3-a049-14c5a41d1c94",
       "name": "Default Data Loader",
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1,
       "position": [
-        -20,
-        900
+        1760,
+        840
       ]
     },
     {
@@ -68,33 +56,27 @@
         "model": "text-embedding-3-small",
         "options": {}
       },
-      "id": "d90f5e06-d84e-4dd5-b0d4-54a88f9c4ccd",
+      "id": "4c8c6a57-3833-4d46-85e5-9c9ac78e4a9c",
       "name": "Embeddings OpenAI1",
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1,
       "position": [
-        -180,
-        900
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "HncvSrrgWmm7rDzf",
-          "name": "OpenAi account"
-        }
-      }
+        1600,
+        840
+      ]
     },
     {
       "parameters": {
         "name": "user_documents",
         "description": "Contains all the user's documents that you can check for context to answer user questions."
       },
-      "id": "d62e12d5-7066-44af-a77a-b81c62255051",
+      "id": "93024975-240c-4246-b4a8-192b2004a8e8",
       "name": "Retrieve Documents",
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
       "typeVersion": 1,
       "position": [
-        -100,
-        180
+        1680,
+        120
       ]
     },
     {
@@ -104,13 +86,13 @@
         "width": 583.4552380860637,
         "color": 4
       },
-      "id": "2b8a3fcf-e6ea-4d8f-8884-efc5cb355ff5",
+      "id": "30175a58-7df5-4778-89d1-fb182ad62eee",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -280,
-        60
+        1500,
+        0
       ]
     },
     {
@@ -120,13 +102,13 @@
         "width": 2070.8894079025763,
         "color": 5
       },
-      "id": "5b8c663b-6a9a-49d7-ae38-6e12910e99aa",
+      "id": "e87a8042-9990-41e0-bc3d-6a4ba0d37996",
       "name": "Sticky Note1",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1780,
-        600
+        0,
+        540
       ]
     },
     {
@@ -145,21 +127,15 @@
           }
         }
       },
-      "id": "952159e7-a32d-4e1d-a16e-39c7b2224d20",
+      "id": "3cac172b-e65d-44bc-a8b5-10949e178d74",
       "name": "Download File",
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        -680,
-        780
+        1100,
+        720
       ],
-      "executeOnce": true,
-      "credentials": {
-        "googleDriveOAuth2Api": {
-          "id": "p06OhLGIuz6PoA9v",
-          "name": "Google Drive account"
-        }
-      }
+      "executeOnce": true
     },
     {
       "parameters": {
@@ -181,20 +157,14 @@
         "event": "fileCreated",
         "options": {}
       },
-      "id": "816c14e3-d046-42a0-a739-e02948a96786",
+      "id": "d24a1561-b2ac-4f36-b5ec-58013252d533",
       "name": "File Created",
       "type": "n8n-nodes-base.googleDriveTrigger",
       "typeVersion": 1,
       "position": [
-        -1720,
-        680
-      ],
-      "credentials": {
-        "googleDriveOAuth2Api": {
-          "id": "p06OhLGIuz6PoA9v",
-          "name": "Google Drive account"
-        }
-      }
+        60,
+        620
+      ]
     },
     {
       "parameters": {
@@ -216,33 +186,27 @@
         "event": "fileUpdated",
         "options": {}
       },
-      "id": "53208949-2b85-4dee-8366-65ec4fd24232",
+      "id": "f55653a4-6a56-4331-8c3d-d46fbf20700f",
       "name": "File Updated",
       "type": "n8n-nodes-base.googleDriveTrigger",
       "typeVersion": 1,
       "position": [
-        -1720,
-        900
-      ],
-      "credentials": {
-        "googleDriveOAuth2Api": {
-          "id": "p06OhLGIuz6PoA9v",
-          "name": "Google Drive account"
-        }
-      }
+        60,
+        840
+      ]
     },
     {
       "parameters": {
         "operation": "text",
         "options": {}
       },
-      "id": "c58b9c00-eedb-44f2-a69a-974c70f4ea2f",
+      "id": "c8201e95-0a06-4582-8921-409b794c2fd2",
       "name": "Extract Document Text",
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        -420,
-        780
+        1360,
+        720
       ],
       "alwaysOutputData": true
     },
@@ -251,50 +215,38 @@
         "model": "text-embedding-3-small",
         "options": {}
       },
-      "id": "9154014e-c07b-410a-b740-30cd6d9f32d9",
+      "id": "cc04cc75-aac9-4639-a544-53759e0ec16f",
       "name": "Embeddings OpenAI",
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1,
       "position": [
-        -60,
-        460
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "HncvSrrgWmm7rDzf",
-          "name": "OpenAi account"
-        }
-      }
+        1720,
+        400
+      ]
     },
     {
       "parameters": {},
-      "id": "8d28d765-a376-47fa-b2ff-f06cc39a5a60",
+      "id": "6c398065-cae6-4a50-86de-dc431adfeee9",
       "name": "Postgres Chat Memory",
       "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
       "typeVersion": 1,
       "position": [
-        -560,
-        420
+        1220,
+        360
       ],
-      "notesInFlow": false,
-      "credentials": {
-        "postgres": {
-          "id": "9ZFOskvLLuu0wvNY",
-          "name": "Postgres account"
-        }
-      }
+      "notesInFlow": false
     },
     {
       "parameters": {
         "options": {}
       },
-      "id": "3c4a3a54-cc8b-4760-95d0-f9572bee6232",
+      "id": "7237c80a-b24a-4196-b6ed-a30d7d92a1f4",
       "name": "Recursive Character Text Splitter",
       "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
       "typeVersion": 1,
       "position": [
-        -20,
-        1100
+        1760,
+        1040
       ]
     },
     {
@@ -304,21 +256,15 @@
         "filterType": "string",
         "filterString": "=metadata->>file_id=like.*{{ $json.file_id }}*"
       },
-      "id": "9601bbd5-8f67-4761-adac-e9a4f4553108",
+      "id": "b39e3097-7e80-4237-abd3-745b9e7a89fa",
       "name": "Delete Old Doc Rows",
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -980,
-        780
+        800,
+        720
       ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "supabaseApi": {
-          "id": "ioP3UdztrH8BlFeZ",
-          "name": "Supabase account"
-        }
-      }
+      "alwaysOutputData": true
     },
     {
       "parameters": {
@@ -334,13 +280,13 @@
         },
         "options": {}
       },
-      "id": "adf80aa4-b826-4cf4-a65b-d009ddf46b74",
+      "id": "c96b4834-8d6b-4b09-8dd4-045bc4f636c1",
       "name": "Set File ID",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1300,
-        780
+        480,
+        720
       ]
     },
     {
@@ -349,13 +295,13 @@
         "height": 525,
         "width": 693
       },
-      "id": "bf8b032a-1bf8-4cf8-b012-532a9b8ad557",
+      "id": "45100840-5df0-4573-bcf8-8400f4771747",
       "name": "Sticky Note2",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -980,
-        60
+        800,
+        0
       ]
     },
     {
@@ -363,13 +309,13 @@
         "public": true,
         "options": {}
       },
-      "id": "285980b1-cc08-46e3-b59e-8e951bd36f0a",
+      "id": "dfa3e74e-5ad1-4adf-ac8f-712263b6fb66",
       "name": "When chat message received",
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        -920,
-        200
+        860,
+        140
       ],
       "webhookId": "e985d15f-b2f6-456d-be15-97e0b1544a40"
     },
@@ -381,13 +327,13 @@
           "systemMessage": "You are a personal assistant who helps answer questions from a corpus of documents when you don't know the answer yourself."
         }
       },
-      "id": "5d2c87ba-990c-45e6-9b10-aa43b43e2059",
+      "id": "49fea8bd-45ca-44ee-9cee-62c8ee0ebb31",
       "name": "RAG AI Agent",
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        -600,
-        200
+        1180,
+        140
       ]
     },
     {
@@ -402,17 +348,17 @@
           "queryName": "match_documents"
         }
       },
-      "id": "7c4265a6-66c8-48ef-800a-dfd22f347026",
+      "id": "2690c06d-a117-423e-bf17-9cbbaade762d",
       "name": "Supabase Vector Store",
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1,
       "position": [
-        -220,
-        340
+        1560,
+        280
       ],
       "credentials": {
         "supabaseApi": {
-          "id": "ioP3UdztrH8BlFeZ",
+          "id": "0Sw4jsPnpTEba709",
           "name": "Supabase account"
         }
       }
@@ -430,34 +376,28 @@
           "queryName": "match_documents"
         }
       },
-      "id": "7eeec3be-5d32-44a4-bf74-5889be2af6ed",
+      "id": "507e0cea-3c94-49d0-b2c9-cb83bafd27e8",
       "name": "Insert into Supabase Vectorstore",
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1,
       "position": [
-        -140,
-        680
-      ],
-      "credentials": {
-        "supabaseApi": {
-          "id": "ioP3UdztrH8BlFeZ",
-          "name": "Supabase account"
-        }
-      }
+        1640,
+        620
+      ]
     },
     {
       "parameters": {
-        "content": "## Initializing document table\n\n```\n-- Enable the pgvector extension to work with embedding vectors\ncreate extension vector;\n\n-- Create a table to store your documents\ncreate table documents (\n  id bigserial primary key,\n  content text, -- corresponds to Document.pageContent\n  metadata jsonb, -- corresponds to Document.metadata\n  embedding vector(1536) -- 1536 works for OpenAI embeddings, change if needed\n);\n\n-- Create a function to search for documents\ncreate function match_documents (\n  query_embedding vector(1536),\n  match_count int default null,\n  filter jsonb DEFAULT '{}'\n) returns table (\n  id bigint,\n  content text,\n  metadata jsonb,\n  similarity float\n)\nlanguage plpgsql\nas $$\n#variable_conflict use_column\nbegin\n  return query\n  select\n    id,\n    content,\n    metadata,\n    1 - (documents.embedding <=> query_embedding) as similarity\n  from documents\n  where metadata @> filter\n  order by documents.embedding <=> query_embedding\n  limit match_count;\nend;\n$$;\n```",
+        "content": "## Initializing document table\nVisit: https://supabase.com/docs/guides/ai/langchain?database-method=sql\nAuthor: Cole Medin",
         "height": 520,
         "width": 780
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1780,
-        60
+        0,
+        0
       ],
-      "id": "c6410051-4541-4b5f-b0f2-a1bb94d947f9",
+      "id": "cf5f6714-b867-4974-9f2b-d1395765ff47",
       "name": "Sticky Note3"
     }
   ],
@@ -644,11 +584,10 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "73c09ef9-9f2e-41f9-962e-d6aeef8d1aeb",
+  "versionId": "cdadaac6-c36c-439e-8154-4164657348df",
   "meta": {
-    "templateCredsSetupCompleted": true,
-    "instanceId": "7703699c5fd9a4408e2964b3b54cea7dc9318824b187a2f05cd82f6a88d66a16"
+    "instanceId": "558d88703fb65b2d0e44613bc35916258b0f0bf983c5d4730c00c424b77ca36a"
   },
-  "id": "noc62OvKaU593xSj",
+  "id": "58eAQqohN6808aIH",
   "tags": []
 }
