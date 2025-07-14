@@ -21,9 +21,9 @@
 }
 
 # Langfuse
-{$LANGFUSE_HOSTNAME} {
-    reverse_proxy langfuse-web:3000
-}
+# {$LANGFUSE_HOSTNAME} {
+#     reverse_proxy langfuse-web:3000
+# }
 
 # # Ollama API
 # {$OLLAMA_HOSTNAME} {
@@ -36,9 +36,9 @@
 }
 
 # Neo4j
-{$NEO4J_HOSTNAME} {
-    reverse_proxy neo4j:7474
-}
+# {$NEO4J_HOSTNAME} {
+#     reverse_proxy neo4j:7474
+# }
 
 import /etc/caddy/addons/*.conf
 
