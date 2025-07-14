@@ -225,7 +225,7 @@ def main():
                       help='Environment to use for Docker Compose (default: private)')
     args = parser.parse_args()
 
-    clone_supabase_repo()
+    # clone_supabase_repo()
     prepare_supabase_env()
 
     # Generate SearXNG secret key and check docker-compose.yml
